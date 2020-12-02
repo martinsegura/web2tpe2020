@@ -1,26 +1,38 @@
 {include file="templates/head.tpl"}
+
 <body>
     <div class="nav-login">
-        <ul>
-            <li>
-                <a href="">Unete a nosotros</a>
-            </li>
-            
-            <li>
-                <a href="Login">Iniciar sesión</a>
+        <ul class="nav-login-ul">
+            <li class="nav-login-li">
+                <a href="Logout" class="a-log">Logout</a>
             </li>
         </ul>
     </div>
-    <nav>
-        <ul>
-            <li>
-                <a href="Home">Home</a>
+
+    <div class="nav-login">
+        <ul class="nav-login-ul">
+            <li class="nav-login-li">
+                <a href="Register" class="a-log">Registrarse</a>
             </li>
-            <li>
-                <a href="Shop">Zapatillas</a>
+            <li class="nav-login-li">
+                <p>|</p>
             </li>
-            <li>
-                <a href="">About</a>
+            <li class="nav-login-li">
+                <a href="Login" class="a-log">Iniciar sesión</a>
+            </li>
+        </ul>
+    </div>
+
+    <nav class="nav-bar">
+        <ul class="nav-bar-ul">
+            <li class="nav-bar-li">
+                <a href="Home" class="a-bar">Home</a>
+            </li>
+            <li class="nav-bar-li">
+                <a href="Shop" class="a-bar">Zapatillas</a>
+            </li>
+            <li class="nav-bar-li">
+                <a href="" class="a-bar">About</a>
             </li>
         </ul>
     </nav>

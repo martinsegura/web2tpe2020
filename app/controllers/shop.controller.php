@@ -1,52 +1,43 @@
 <?php
 
 include_once 'app/models/shop.model.php';
+include_once 'app/models/user.model.php';
 include_once 'app/views/shop.view.php';
 
 class ShopController{
 
     private $model;
     private $view;
+    private $usermodel;
 
         function __construct(){
             $this->model = new ShopModel();
+            $this->usermodel = new UserModel();
             $this->view = new ShopView();
         }
 
+        function showIndex(){
+            $this->view->showIndex();
+        }
         //Muestra todo el shop y trae todas las zapatillas o de una marca en expecifico
         function showShop(){
+            
             $marcas = $this->model->getMarcas();
             $this->view->showNav($marcas);
             $zapatillas = $this->model->getZapatillas();
             $this->view->showZapatillas($zapatillas);
-        }
 
-        function showNike(){
-            $id = 1;
-            $this->showZapatillaByMarca($id);
         }
-        function showAdidas(){
-            $id = 2;
-            $this->showZapatillaByMarca($id);
-        }
-        function showPuma(){
-            $id = 3;
-            $this->showZapatillaByMarca($id);
-        }
-        function showFila(){
-            $id = 4;
-            $this->showZapatillaByMarca($id);
-        }
-        function showNewBalance(){
-            $id = 5;
-            $this->showZapatillaByMarca($id);
-        }
-        
+  
         //Crea el shop y filtra por una marca en expecifico
-        function showZapatillaByMarca($id){ 
+        function showZapatillaByMarca($id = null){ 
+            $marca_id = $id[':ID'];
             $marcas = $this->model->getMarcas();
             $this->view->showNav($marcas);
-            $collection = $this->model->getZapatillaByMarca($id);
+            $collection = $this->model->getZapatillaByMarca($marca_id);
+            if(empty($collection)){
+                $collection = false;
+            }
             $this->view->showZapatillas($collection);
         }
 
@@ -54,7 +45,14 @@ class ShopController{
         function showZapatilla($id = null){
             $zapatilla_id = $id[':id'];
             $zapatilla = $this->model->getZapatilla($zapatilla_id);
-            $this->view->showZapatilla($zapatilla);
+            session_start();
+            if(isset($_SESSION["EMAIL"])){
+                $sesion = true;
+                $this->view->showZapatilla($zapatilla, $sesion);
+            }else{
+                $sesion = false;
+                $this->view->showZapatilla($zapatilla, $sesion);
+            }
         }
 
         //Verifica si la cuenta que inicio sesion es un admin
@@ -63,7 +61,8 @@ class ShopController{
             if($_SESSION["ADMIN"] == 1){
                 $marcas = $this->model->getMarcas();
                 $zapatillas = $this->model->getZapatillas();
-                $this->view->showAdmin($marcas, $zapatillas);
+                $usersDB = $this->usermodel->getUsers();
+                $this->view->showAdmin($marcas, $zapatillas, $usersDB);
             }
             if(!isset($_SESSION["ADMIN"]) || $_SESSION["ADMIN"] == 0){
                 header("Location: " . BASE_URL . 'Home'); 

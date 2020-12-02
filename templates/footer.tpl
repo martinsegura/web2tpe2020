@@ -4,7 +4,7 @@
 <footer>
         <ul>
             <li>
-                <a href="">Locales mas cercanos</a>
+                <a href="" class="a-log">Locales mas cercanos</a>
             </li>
         </ul>
     </footer>

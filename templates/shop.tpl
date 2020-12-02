@@ -1,9 +1,14 @@
 {include file="templates/head.tpl"}
-<div>
+<h1 class="shop-title">Todos los calzados</h1>
 
+{if !$zapatillas}
+<h1 class="shop-title">No hay Zapatillas disponibles</h1>
+{else}
+<div  class="shop-container">
     {foreach from=$zapatillas item=zapatilla}
-    <div>
-        <h1>{$zapatilla->nombre}</h1>
+    <div class="shop-item">
+        <div class="shoe-image"></div>
+        <h2>{$zapatilla->nombre}</h2>
         <p>{$zapatilla->talle}</p>
         <p>{$zapatilla->precio}</p>
         {if $zapatilla->id_marca == 1}
@@ -25,10 +30,9 @@
         {if $zapatilla->id_marca == 5}
         <p>New balance</p>
         {/if}
-        <a href="Comprar/{$zapatilla->id}">Comprar</a>
+        <a class="a-shop"href="Comprar/{$zapatilla->id}">Comprar</a>
     </div>
-    {/foreach}
-           
+    {/foreach}    
 </div>
-
+{/if}
 {include file="templates/footer.tpl"}

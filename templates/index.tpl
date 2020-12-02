@@ -1,17 +1,23 @@
 {include file="templates/head.tpl"}
 {include file="templates/header.tpl"}
+<div>
+        <img src="" alt="">
+        <h1 class="shop-title">Nike Air Max</h1>
+        <div class="image-index"></div>
+        <a class="a-shop  a-index" href="">Comprar</a>
+        
+        <img src="" alt="">
+        <h1 class="shop-title">New Balance</h1>
+        <div class="image-index"></div>
+        <a class="a-shop  a-index" href="">Comprar</a>
+        
+        <img src="" alt="">
+        <h1 class="shop-title">Nuevos Clásicos</h1>
+        <div class="image-index"></div>
+        <a class="a-shop a-index" href="">Ver Más</a>
+</div>
 
-        <img src="" alt="">
-        <h1>Nike Air Max</h1>
-        <a href="">Comprar</a>
-        
-        <img src="" alt="">
-        <h1>New Balance</h1>
-        <a href="">Comprar</a>
-        
-        <img src="" alt="">
-        <h1>Nuevos Clásicos</h1>
-        <a href="">Ver Más</a>
+
 
 {include file="templates/footer.tpl"}
 

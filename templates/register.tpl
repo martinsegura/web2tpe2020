@@ -3,12 +3,12 @@
     <a class="a-back" href="{BASE_URL}Shop">Volver</a>
 </div>
 
-<div class="login-container">
+<div class="register-container">
     <div class="login-items-container">
-        <h1 class="login-title">Iniciar sesión</h1>
-            <form action="userLogin" method="post">
+        <h1 class="login-title">Registrarse</h1>
+            <form action="userRegister" method="post">
             <div>
-                <label class="login-text"for="user">Usuario</label>
+                <label class="login-text"for="user">Nombre de usuario</label>
                 <input class="login-input" type="text" name="input_user">
             </div>
 
@@ -18,7 +18,7 @@
             </div>
 
             <div>
-                <button class="login-submit" type="submit">Entrar</button>
+                <button class="login-submit" type="submit">Registarse</button>
             </div>
         </form>
 

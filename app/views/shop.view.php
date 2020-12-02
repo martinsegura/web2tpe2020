@@ -3,7 +3,12 @@
 include_once 'libs/smarty/libs/Smarty.class.php';
 
 class ShopView{
-    
+    //Muestra el index
+    function showIndex(){
+        $smarty = new Smarty();
+        $smarty->display('templates/index.tpl');
+    }
+
     //Crea un nav con links para filtrar por cada marca
     function showNav($marcas){
         $smarty = new Smarty();
@@ -19,17 +24,19 @@ class ShopView{
     }
 
     //Muestra un item en particular
-    function showZapatilla($zapatilla){
+    function showZapatilla($zapatilla, $sesion){
         $smarty = new Smarty();
         $smarty->assign('zapatilla', $zapatilla);
+        $smarty->assign('sesion', $sesion);
         $smarty->display('templates/shoe.tpl');
     }
 
     //Muestra la pagina de admin
-    function showAdmin($marcas, $zapatillas){
+    function showAdmin($marcas, $zapatillas, $usersDB){
         $smarty = new Smarty();
         $smarty->assign('marcas', $marcas);
         $smarty->assign('zapatillas', $zapatillas);
+        $smarty->assign('usersDB', $usersDB);
         $smarty->display('templates/admin.tpl');
     }
 

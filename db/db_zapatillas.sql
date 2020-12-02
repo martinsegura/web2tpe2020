@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2020 a las 03:19:33
+-- Tiempo de generación: 01-12-2020 a las 06:29:17
 -- Versión del servidor: 10.1.25-MariaDB
 -- Versión de PHP: 7.1.7
 
@@ -25,6 +25,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `texto` text NOT NULL,
+  `calificacion` int(11) NOT NULL,
+  `id_comentario` int(11) NOT NULL,
+  `id_zapatilla` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`texto`, `calificacion`, `id_comentario`, `id_zapatilla`) VALUES
+('buenas niaki', 5, 7, 1),
+('prueba api', 1, 8, 1),
+('buenas puma', 5, 9, 8);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `marca`
 --
 
@@ -42,7 +64,14 @@ INSERT INTO `marca` (`id_marca`, `nombre`) VALUES
 (2, 'Adidas'),
 (3, 'Puma'),
 (4, 'Fila'),
-(5, 'New Balance');
+(5, 'New Balance'),
+(6, 'Topper'),
+(7, 'Ribok'),
+(8, 'Topper'),
+(9, 'Topper'),
+(10, 'Topper'),
+(11, 'Topper'),
+(12, 'Reebok');
 
 -- --------------------------------------------------------
 
@@ -62,7 +91,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `contraseña`, `admin`) VALUES
-(1, 'admin', '$2y$10$cEw6SJ5.Of2PmRyoWJV58uAv.Z0I1eaY1CC8jjoqMkNgFnHNPZZcq', 1);
+(1, 'admin', '$2y$10$cEw6SJ5.Of2PmRyoWJV58uAv.Z0I1eaY1CC8jjoqMkNgFnHNPZZcq', 1),
+(8, '123', '$2y$10$XOJG/NLIiE0lKph6ZYrL8eAF1KdaVdIu5M67rreSiAeGZsBtrjIwq', 0);
 
 -- --------------------------------------------------------
 
@@ -96,12 +126,19 @@ INSERT INTO `zapatilla` (`id`, `nombre`, `precio`, `talle`, `id_marca`) VALUES
 (12, 'Fila Ray Tracer', 9999, 36, 4),
 (13, 'New Balance 574', 9999, 40, 5),
 (14, 'New Balance 274', 8849, 41, 5),
-(15, 'New Balance X-90', 11999, 40, 5),
-(16, 'Nike Air Jordan 1', 1299, 32, 1);
+(16, 'Nike Air Jordan 1', 1299, 32, 1),
+(17, 'prueba', 5434, 23, 1),
+(20, 're piola', 123123, 1111, 1);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`id_comentario`);
 
 --
 -- Indices de la tabla `marca`
@@ -127,20 +164,25 @@ ALTER TABLE `zapatilla`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `zapatilla`
 --
 ALTER TABLE `zapatilla`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- Restricciones para tablas volcadas
 --
